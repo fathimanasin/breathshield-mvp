@@ -97,9 +97,9 @@ if st.button("Calculate Exposure"):
             f"Your exposure is approximately {round(percent_diff, 1)}% higher than the city average."
         )
     else:
-    st.success(
-        f"Your exposure is approximately {abs(round(percent_diff, 1))}% lower than the city average."
-    )
+        st.success(
+            f"Your exposure is approximately {abs(round(percent_diff, 1))}% lower than the city average."
+        )
 
 
     if exposure_score < 100:
