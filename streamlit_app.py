@@ -47,6 +47,14 @@ aqi_data = {
     "Kochi": 70
 }
 
+# City coordinates for map visualization
+city_coordinates = {
+"Delhi": {"lat": 28.6139, "lon": 77.2090},
+"Bangalore": {"lat": 12.9716, "lon": 77.5946},
+"Kochi": {"lat": 9.9312, "lon": 76.2673}
+}    
+
+
 city_baseline_factor = {
     "Delhi": 11.0,
     "Bangalore": 0.85,
