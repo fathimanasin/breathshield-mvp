@@ -92,6 +92,20 @@ if st.button("Calculate Exposure"):
         * city_baseline_factor[city]
     )
 
+    st.divider()
+    st.subheader("City-level Pollution Map")
+
+    map_data = []
+
+    for city_name, coords in city_coordinates.items():
+        map_data.append({
+            "lat": coords["lat"],
+            "lon": coords["lon"],
+            "aqi": aqi_data[city_name]
+    })
+
+    st.map(map_data)
+
     st.subheader("Personal vs City Exposure")
 
     st.write("**Your Personal Exposure:**", round(exposure_score, 2))
