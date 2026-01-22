@@ -34,6 +34,10 @@ time_spent = st.slider(
     "Time spent outdoors / commuting (minutes)",
     5, 180, 30
 )
+time_of_day = st.selectbox(
+"Time of day",
+["Morning (7–10 AM)", "Afternoon (12–4 PM)", "Evening (6–9 PM)"]
+)
 
 st.divider()
 
@@ -48,12 +52,26 @@ activity_factor = {
     "Cycling": 1.5,
     "Driving": 0.8
 }
+time_factor = {
+"Morning (7–10 AM)": 1.3,
+"Afternoon (12–4 PM)": 0.9,
+"Evening (6–9 PM)": 1.1
+}
 
 if st.button("Calculate Exposure"):
     aqi = aqi_data[city]
-    exposure_score = aqi * (time_spent / 60) * activity_factor[activity]
+    exposure_score = (
+    aqi
+    * (time_spent / 60)
+    * activity_factor[activity]
+    * time_factor[time_of_day]
+    )
+
 
     st.subheader("Exposure Result")
+    st.caption(
+        "Exposure varies by time of the day due to traffic density and atmospheric conditions."
+    )
     st.metric("Personal Exposure Score", round(exposure_score, 2))
 
     if exposure_score < 100:
