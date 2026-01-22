@@ -67,3 +67,18 @@ st.caption(
 "This is a relative exposure estimate for decision support, "
 "not a medical measurement."
 )
+
+st.subheader("Exposure Result")
+st.metric("Personal Exposure Score", round(exposure_score, 2))
+
+if exposure_score < 100:
+st.success("Low risk – current choices are relatively safer.")
+elif exposure_score < 200:
+st.warning("Moderate risk – small changes can reduce exposure.")
+else:
+st.error("High risk – consider adjusting timing or route.")
+
+st.caption(
+"This is a relative exposure estimate for decision support, "
+"not a medical measurement."
+)
