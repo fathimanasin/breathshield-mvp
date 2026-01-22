@@ -67,3 +67,18 @@ if st.button("Calculate Exposure"):
         "This is a relative exposure estimate for decision support, "
         "not a medical measurement."
     )
+    # ----------------------------
+    # Mock Historical Exposure Trend
+    # ----------------------------
+    st.subheader("Exposure Trend (Last 7 Days)")
+
+    historical_exposure = [
+    exposure_score * 0.6,
+    exposure_score * 0.75,
+    exposure_score * 0.8,
+    exposure_score * 0.9,
+    exposure_score * 1.0,
+    exposure_score * 1.1,
+    exposure_score * 1.05,
+    ] 
+    st.line_chart(historical_exposure)
