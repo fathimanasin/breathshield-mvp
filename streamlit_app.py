@@ -47,6 +47,11 @@ aqi_data = {
     "Kochi": 70
 }
 
+city_baseline_factor = {
+    "Delhi": 11.0,
+    "Bangalore": 0.85,
+    "Kochi": 0.75
+}    
 activity_factor = {
     "Walking": 1.2,
     "Cycling": 1.5,
@@ -73,6 +78,29 @@ if st.button("Calculate Exposure"):
         "Exposure varies by time of the day due to traffic density and atmospheric conditions."
     )
     st.metric("Personal Exposure Score", round(exposure_score, 2))
+    city_baseline_exposure = (
+        aqi
+        * (time_spent / 60)
+        * city_baseline_factor[city]
+    )
+
+    st.subheader("Personal vs City Exposure")
+
+    st.write("**Your Personal Exposure:**", round(exposure_score, 2))
+    st.write("**City Average Exposure:**", round(city_baseline_exposure, 2))
+
+    difference = exposure_score - city_baseline_exposure
+    percent_diff = (difference / city_baseline_exposure) * 100
+
+    if difference > 0:
+        st.warning(
+            f"Your exposure is approximately {round(percent_diff, 1)}% higher than the city average."
+        )
+    else:
+    st.success(
+        f"Your exposure is approximately {abs(round(percent_diff, 1))}% lower than the city average."
+    )
+
 
     if exposure_score < 100:
         st.success("Low risk – current choices are relatively safer.")
