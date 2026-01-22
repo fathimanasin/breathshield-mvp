@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 st.title("🫁 BreathShield")
-st.subheader("Personal Air Pollution Exposure – Proof of Concept")
+st.subheader("Personal Air Pollution Exposure ")
 
 st.markdown(
     """
